@@ -2,11 +2,15 @@
 ### by [John Blalock](https://github.com/simpledimplejohn) 
 
 ### __Description__
-A Tap-Room that serves kombucha needs to track their inventory.  This app implements these features in a web interface built with the React library and Javascript.  It has full CRUD function to add, read, remove, and update.
+_A Tap-Room that serves kombucha needs to track their inventory.  This app implements these features in a web interface built with the React library and Javascript.  It has full CRUD function to add, read, remove, and update._
+
+### _Project Tree_
+_accurate representation of the application's component tree_
 
 
 ### __Technologies Used__
 
+* _React_
 * _JavaScript_
 * _ES6_
 * _JSX_
@@ -25,7 +29,7 @@ A Tap-Room that serves kombucha needs to track their inventory.  This app implem
 
 
 ### __Known Bugs / Future Goals__
-No bugs have been found or reported. Please contact the authors if you experience poor performance.
+_No bugs have been found or reported. Please contact the authors if you experience poor performance._
 
 
 
