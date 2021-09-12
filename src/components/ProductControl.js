@@ -1,115 +1,218 @@
-import React from "react";
-import NewProductForm from "./NewProductForm";
+import React from 'react';
 import ProductList from "./ProductList";
-import ProductDetails from "./ProductDetails";
-import EditProductForm from './EditProductForm';
+import NewProductForm from "./NewProductForm";
+import { Button } from "react-bootstrap"
+import ProductDetail from "./ProductDetail"
+import EditProduct from "./EditProduct"
+import Cart from "./Cart"
 
 class ProductControl extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      formVisibleOnPage: false,
-      masterProductList: [],
-      selectedProduct: null,
-      editing: false
-    };
-  }
-  //event handler fx prefixed with handle
-  //use .concat(newProduct) to makes a copy of the array instead of adding to it with .push(newProduct)
-  handleAddingNewProductToList = (newProduct) => {
-    const newMasterProductList = this.state.masterProductList.concat(newProduct);
-    this.setState({masterProductList: newMasterProductList,
-                  formVisibleOnPage: false 
-                  });
+      this.state = {
+        newProductFormVisible: false,
+        mainProductList: [],
+        selectedProduct: null,
+        edit: false,
+        cart: []
+      }
+
+
+    // this.state = {
+    //   newProductFormVisible: false,
+    //   mainProductList: [{
+    //     name: "Test Product",
+    //     description: "Test Description",
+    //     quantity: 105,
+    //     id: "test-id"
+    //   }, {
+    //     name: "Test 2 Product",
+    //     description: "Test 2 Description",
+    //     quantity: 5,
+    //     id: "test-id-2"
+    //   }],
+    //   selectedProduct: null,
+    //   edit: false,
+    //   cart: [{
+    //     name: "Test 2 Product",
+    //     description: "Test 2 Description",
+    //     quantity: 1,
+    //     id: "test-id-2"
+    //   }]
+    // }
+
+
   }
 
   handleClick = () => {
     if (this.state.selectedProduct != null) {
       this.setState({
-        formVisibleOnPage: false,
+        newProductFormVisible: false,
         selectedProduct: null,
-        editing: false
-      });
+        edit: false
+      })
     } else {
-      this.setState(prevState =>({
-        formVisibleOnPage: !prevState.formVisibleOnPage
-      }));
+      this.setState(prevState => ({
+        newProductFormVisible: !prevState.newProductFormVisible
+      }))
     }
   }
-  //if this.state.selectedProduct isn't null the we must be on a product detail page, in that case we know that formVisibleOnPage should be false and selectedProduct should be null
-  //setState() takes an object, and can take two arguments 
-  //pass in current state, change to the opposite state with !
-  //use an arrow fx for automatic this. binding
+
+  handleDeletingProductFromList = (id) => {
+    const editedMainProductList = this.state.mainProductList
+      .filter(product => product.id !== id)
+    this.setState({
+      mainProductList: editedMainProductList,
+      selectedProduct: null
+    })
+  }
+
+  handleSwitchToEdit = (id) => {
+    const selectedProduct = this.state.mainProductList.filter(product => product.id === id)[0];
+    this.setState({
+      selectedProduct: selectedProduct,
+      edit: true
+    });
+  }
+
+
+  handleEditing = (editedProduct) => {
+    const editedMainProductList = this.state.mainProductList
+      .filter(product => product.id !== this.state.selectedProduct["id"])
+      .concat(editedProduct)
+    this.setState({
+      mainProductList: editedMainProductList,
+      selectedProduct: null,
+      edit: false
+    })
+  }
+
+  handleAddingNewProductToList = (newProduct) => {
+    if (newProductValid(newProduct)) {
+      const newMainProductList = this.state.mainProductList.concat(newProduct);
+      this.setState({
+        mainProductList: newMainProductList,
+        newProductFormVisible: false
+      })
+    } else {
+      this.setState({
+        newProductFormVisible: false
+      })
+    }
+  }
 
   handleChangingSelectedProduct = (id) => {
-    const selectedProduct = this.state.masterProductList.filter(product => product.id === id)[0];
-    this.setState({selectedProduct: selectedProduct});
+    const selectedProduct = this.state.mainProductList.filter(product => product.id === id)[0];
+    this.setState({ selectedProduct: selectedProduct });
   }
-  //filter() returns array so set to [0] because we only need one item
 
-  handleDeletingProduct = (id) => {
-    const newMasterProductList = this.state.masterProductList.filter(product => product.id !== id);
+  handleAddStock = (productToEdit) => {
+    let updatedProduct = productToEdit
+    updatedProduct.quantity++
+    const editedMainProductList = this.state.mainProductList
+      .filter(product => product.id !== productToEdit.id)
+      .concat(updatedProduct)
     this.setState({
-      masterProductList: newMasterProductList,
-      selectedProduct: null
-    });
-  }
-  // filter out everything that doesn't have our delte id, then make a new list with those (functional)
-  //then add the new filtered list to the key value pair
-  //set slected product back to null so that TickList will be showing
-
-  handleEditClick = () => {
-    console.log("handleEditClick reached!");
-    this.setState({editing: true});
+      mainProductList: editedMainProductList
+    })
   }
 
-  handleEditingProductInList = (productToEdit) => {
-    const editedMasterProductList = this.state.masterProductList  
-      .filter(product => product.id !== this.state.selectedProduct.id)
-      .concat(productToEdit);
-    this.setState({
-      masterProductList: editedMasterProductList,
-      editing: false,
-      selectedProduct: null
-    });
-  }
-  //filter previous version of product, then add the edited version of the product to the list with concat(), this way we do not mutate state
-  //then set masterProductList to = updated product
-  // then update bool to false
-
-  render(){
-    let currentlyVisibleState = null;
-    let buttonText = null;
-    if (this.state.editing) {
-        currentlyVisibleState = <EditProductForm 
-          product = {this.state.selectedProduct} 
-          onEditProduct = {this.handleEditingProductInList} />
-        buttonText = "Return to Product List";
-    } else if (this.state.selectedProduct != null) {
-      currentlyVisibleState = <ProductDetails
-        product = {this.state.selectedProduct} 
-        onClickingDelete = {this.handleDeletingProduct} 
-        onClickingEdit ={this.handleEditClick} /> //onClickingDelete passes our handleDeletingProduct as a prop
-      buttonText = "Return to Product List";
-    } else if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewProductForm 
-        onNewProductCreation={this.handleAddingNewProductToList} />;
-      buttonText = "Return to Product List";
+  handleSubtractStock = (productToEdit) => {
+    let updatedProduct = productToEdit
+    updatedProduct.quantity--
+    if (updatedProduct.quantity < 0) {
+      updatedProduct.quantity = 0
     } else {
-      currentlyVisibleState = <ProductList productList={this.state.masterProductList} onProductSelection={this.handleChangingSelectedProduct} />
-// this is where we pass the ability to selecte the product from the product list onProductSelection and currentlyVisibleState are props
-      buttonText = "Add Product";
+      const currentCart = this.state.cart
+      const newCart = cartBranche(currentCart, productToEdit)
+      const editedMainProductList = this.state.mainProductList
+        .filter(product => product.id !== productToEdit.id)
+        .concat(updatedProduct)
+      this.setState({
+        mainProductList: editedMainProductList,
+        cart: newCart
+      })
+      console.log(newCart)
     }
+  }
+
+  render() {
+    let visibleState = null;
+    let buttonText = null;
+    if (this.state.edit) {
+      visibleState = <EditProduct
+        product={this.state.selectedProduct}
+        editProductFunction={this.handleEditing}
+      />
+      buttonText = "Head back to Product List 1x **text in ProductControl.js**"
+    } else if (this.state.selectedProduct != null) {
+      visibleState = <ProductDetail
+        product={this.state.selectedProduct}
+        deleteProduct={this.handleDeletingProductFromList}
+        editProduct={this.handleSwitchToEdit}
+      />
+      buttonText = "Head back to Product List 2x **text in ProductControl.js**"
+    } else if (this.state.newProductFormVisible) {
+      visibleState = <NewProductForm onNewProductCreation={this.handleAddingNewProductToList} />
+      buttonText = "Head back to Product List 3x **text in ProductControl.js**"
+    } else {
+      visibleState = <ProductList
+        productList={this.state.mainProductList.sort(dynamicSort("name"))
+        }
+        onProductSelection={this.handleChangingSelectedProduct}
+        addStock={this.handleAddStock}
+        subtractStock={this.handleSubtractStock}
+      />
+      buttonText = "Add a product **text in ProductControl.js**"
+    }
+
     return (
       <React.Fragment>
-        {currentlyVisibleState}
-        {<button onClick={this.handleClick}>{buttonText}</button>}
+        <p><strong>****Just a button, ProductControl.js***</strong></p>
+        <Cart items={this.state.cart}/>
+        {visibleState}
+        <Button onClick={this.handleClick} variant="dark" className="mt-3 p-5">{buttonText}**ProductControl.js***</Button>
       </React.Fragment>
-      //button lives on the DOM so this needs to be bound so it can have access to it
-      //arrow fx automatically bind this
-    );
+    ) 
   }
 }
 
-export default ProductControl;
+export default ProductControl
+
+const dynamicSort = (property) => {
+  let sortOrder = 1;
+  return function (a, b) {
+    const result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+    return result * sortOrder;
+  }
+}
+
+function newProductValid(newProduct) {
+  if (newProduct.name && newProduct.quantity && newProduct.description) {
+    return true
+  }
+}
+
+function cartBranche(newCart, productToEdit) {
+  let filteredCart = newCart.filter(item => {
+    return item.id === productToEdit.id
+  })
+
+  if (filteredCart.length === 1) {
+    newCart.forEach((object) => {
+      if (object.id === productToEdit.id) {
+        object.quantity++
+      }
+    })
+  } else {
+    const cartProduct = productToEdit
+    const cartItem = {
+      id: cartProduct.id,
+      name: cartProduct.name,
+      quantity: 1
+    }
+    newCart.push(cartItem)
+  }
+  return newCart
+}
