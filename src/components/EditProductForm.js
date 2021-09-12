@@ -1,26 +1,34 @@
 import React from "react";
+import PropTypes from "prop-types"
 import ReusableForm from "./ReusableForm";
-import PropTypes from "prop-types";
 
-function EditProductForm (props) {
-  const { product } = props;
+function EditProduct(props) {
   function handleEditProductFormSubmission(event) {
-    event.preventDefault();
-    props.onEditProduct({names: event.target.names.value, location: event.target.location.value, issue: event.target.issue.value, id: product.id});
+    event.preventDefault()
+    props.editProductFunction(
+      {
+        name: event.target.name.value,
+        description: event.target.description.value,
+        quantity: event.target.quantity.value,
+        id: props.product.id
+      }
+    )
   }
-  
+
   return (
     <React.Fragment>
       <ReusableForm
         formSubmissionHandler={handleEditProductFormSubmission}
-        buttonText="Update Product" />
+        formButtonText="Edit"
+        product={props.product}
+        prodBool={true}
+      ></ReusableForm>
     </React.Fragment>
-  );
+  )
 }
 
-EditProductForm.propTypes = {
-  product: PropTypes.object,
-  onEditProduct: PropTypes.func
+EditProduct.propTypes = {
+  editProductFunction: PropTypes.func //inherited from parent. Function from controller handleaddingnewproducttolist
 }
 
-export default EditProductForm;
+export default EditProduct
