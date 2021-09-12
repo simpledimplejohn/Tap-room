@@ -1,10 +1,10 @@
 import React from 'react';
 import ProductList from "./ProductList";
 import NewProductForm from "./NewProductForm";
-import { Button } from "react-bootstrap"
-import ProductDetail from "./ProductDetail"
-import EditProduct from "./EditProduct"
-import Cart from "./Cart"
+import { Button } from "react-bootstrap";
+import ProductDetail from "./ProductDetail";
+import EditProduct from "./EditProduct";
+import Cart from "./Cart";
 
 class ProductControl extends React.Component {
 
