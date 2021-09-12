@@ -2,7 +2,7 @@ import React from "react";
 
 function Header(){
   return (
-    <h1>Merch Site</h1>
+    <h1>Tap Room</h1>
   );
 }
 
