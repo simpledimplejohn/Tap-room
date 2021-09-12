@@ -1,31 +1,37 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from "react"
+import PropTypes from "prop-types"
+import { Button, Row, Col } from "react-bootstrap"
 
-function ProductDetails(props){
-  const { product, onClickingDelete } = props;
+function ProductDetail(props) {
+  const { product } = props;
 
   return (
     <React.Fragment>
-      <h1>Product Details</h1>
-      <h3>{product.location} - {product.names}</h3>
-      <p><em>{product.issue}</em></p>
-      <button onClick={ props.onClickingEdit }>Update Product</button>
-      <button onClick={()=> onClickingDelete(product.id) }>Close Product</button>
-      <hr/>
-    </React.Fragment>
+      <p>***ProductDetails.js***</p>
+      <h1>{product.name}</h1>
+      <p>{product.description}</p>
+      <p>Quantity: {product.quantity}</p>
+      <Row>
+        <Col>
+          <Button
+            className="btn-warning"
+            onClick={() => props.editProduct(product.id)}
+          > Edit **in ProductDetail.js**</Button>
+        </Col>
+        <Col>
+          <Button
+            className="btn-danger"
+            onClick={() => props.deleteProduct(product.id)}
+          > Delete **in ProductDetail.js**</Button>
+        </Col>
+      </Row>
+    </React.Fragment >
   )
 }
 
-ProductDetails.propTypes = {
+ProductDetail.propTypes = {
   product: PropTypes.object,
-  onClickingDelete: PropTypes.func,
-  onClickingEdit: PropTypes.func
-
+  deleteProduct: PropTypes.func
 };
 
-export default ProductDetails;
-
-// object destructuring
-// const { product } = props; gets the product object from the prop
-// onClickingDelete: gets button fx and passes it down
-// destructured onClickingDelete at the top of the fx
+export default ProductDetail
