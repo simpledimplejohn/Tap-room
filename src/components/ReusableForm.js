@@ -9,7 +9,7 @@ function ReusableForm(props) {
         <Form.Group
           className="mb-3"
           controlId="productName">
-          <Form.Label>Product Name</Form.Label>
+          <Form.Label>Kombucha Name</Form.Label>
           <Form.Control
             type="text"
             name="name"
@@ -21,7 +21,7 @@ function ReusableForm(props) {
         <Form.Group
           className="mb-3"
           controlId="productDescription">
-          <Form.Label>Product Description</Form.Label>
+          <Form.Label>Kombucha Description</Form.Label>
           <Form.Control
             as="textarea"
             rows={3}
@@ -32,7 +32,7 @@ function ReusableForm(props) {
         <Form.Group
           className="mb-3"
           controlId="productQuantity">
-          <Form.Label>Quantity</Form.Label>
+          <Form.Label>Quantity of Kegs</Form.Label>
           <Form.Control
             type="number"
             name="quantity"

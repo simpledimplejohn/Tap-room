@@ -17,32 +17,6 @@ class ProductControl extends React.Component {
         edit: false,
         cart: []
       }
-
-
-    // this.state = {
-    //   newProductFormVisible: false,
-    //   mainProductList: [{
-    //     name: "Test Product",
-    //     description: "Test Description",
-    //     quantity: 105,
-    //     id: "test-id"
-    //   }, {
-    //     name: "Test 2 Product",
-    //     description: "Test 2 Description",
-    //     quantity: 5,
-    //     id: "test-id-2"
-    //   }],
-    //   selectedProduct: null,
-    //   edit: false,
-    //   cart: [{
-    //     name: "Test 2 Product",
-    //     description: "Test 2 Description",
-    //     quantity: 1,
-    //     id: "test-id-2"
-    //   }]
-    // }
-
-
   }
 
   handleClick = () => {
@@ -145,17 +119,17 @@ class ProductControl extends React.Component {
         product={this.state.selectedProduct}
         editProductFunction={this.handleEditing}
       />
-      buttonText = "Head back to Product List"
+      buttonText = "Head back to Keg List"
     } else if (this.state.selectedProduct != null) {
       visibleState = <ProductDetail
         product={this.state.selectedProduct}
         deleteProduct={this.handleDeletingProductFromList}
         editProduct={this.handleSwitchToEdit}
       />
-      buttonText = "Head back to Product List"
+      buttonText = "Head back to Keg List"
     } else if (this.state.newProductFormVisible) {
       visibleState = <NewProductForm onNewProductCreation={this.handleAddingNewProductToList} />
-      buttonText = "Head back to Product List"
+      buttonText = "Head back to Keg List"
     } else {
       visibleState = <ProductList
         productList={this.state.mainProductList.sort(dynamicSort("name"))
@@ -164,7 +138,7 @@ class ProductControl extends React.Component {
         addStock={this.handleAddStock}
         subtractStock={this.handleSubtractStock}
       />
-      buttonText = "Add a product"
+      buttonText = "Add a keg"
     }
 
     return (

@@ -14,17 +14,15 @@ export default function Product(props) {
     <React.Fragment>
       <div onClick={() => props.whenProductClicked(props.id)}>
         <hr/>
-        <p>{props.name}</p>
-        <p>
-          {props.description}
-        </p>
+        <p>Kombucha Name: {props.name}</p>
+        <p>Kombucha Description {props.description}</p>
         <ul>
-          <li>Quantity: {props.quantity}</li>
+          <li>Quantity of Kegs: {props.quantity}</li>
           <li>ID: {props.id}</li>
         </ul>
         <Button
           type="submit" onClick={() => props.stockPlus(prod)}>
-          Add 1
+          Add 1 keg
         </Button>
         
         <Button
