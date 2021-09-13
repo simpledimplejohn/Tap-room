@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Button } from "react-bootstrap"
 
 export default function Product(props) {
-  const prod = { name: props.name, description: props.description, quantity: props.quantity, id: props.id }
+  const prod = { name: props.name, brand: props.brand, flavor: props.flavor, price: props.price, quantity: props.quantity, id: props.id }
 
   let subtract = "Subtract 1"
   if (prod.quantity === 0) {
@@ -14,8 +14,12 @@ export default function Product(props) {
     <React.Fragment>
       <div onClick={() => props.whenProductClicked(props.id)}>
         <hr/>
-        <p>Kombucha Name: {props.name}</p>
-        <p>Kombucha Description {props.description}</p>
+        <p><strong>Kumbucha</strong></p>
+        <p><strong>Name:</strong> {props.name}</p>
+        <p><strong>Brand:</strong> {props.brand}</p>
+        <p><strong>Flavor:</strong> {props.flavor}</p>
+        <p><strong>Price:</strong> {props.price}</p>
+         
         <ul>
           <li>Quantity of Kegs: {props.quantity}</li>
           <li>ID: {props.id}</li>
@@ -38,7 +42,9 @@ export default function Product(props) {
 
 Product.propTypes = {
   name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  brand: PropTypes.string.isRequired,
+  flavor: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
   quantity: PropTypes.number.isRequired,
   id: PropTypes.string,
   whenProductClicked: PropTypes.func,

@@ -9,7 +9,9 @@ function NewProductForm(props) {
     props.onNewProductCreation(
       {
         name: event.target.name.value,
-        description: event.target.description.value,
+        brand: event.target.brand.value,
+        flavor: event.target.flavor.value,
+        price: event.target.price.value,
         quantity: event.target.quantity.value,
         id: v4()
       }

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 
 
-export default function Cart(props) {
+export default function Total(props) {
   const { items } = props
 
   let totalCartItems = 0
@@ -14,7 +14,7 @@ export default function Cart(props) {
   console.log(items)
   return (
     <React.Fragment>
-        <p>Items in Cart: {totalCartItems}</p>
+        <p>Total Kegs: {totalCartItems}</p>
         <hr/>
     </React.Fragment>
   )

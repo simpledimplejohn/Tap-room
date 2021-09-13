@@ -7,30 +7,43 @@ function ReusableForm(props) {
     <React.Fragment>
       <Form onSubmit={props.formSubmissionHandler}>
         <Form.Group
-          className="mb-3"
           controlId="productName">
           <Form.Label>Kombucha Name</Form.Label>
           <Form.Control
             type="text"
             name="name"
             required
-            defaultValue={props.prodBool ? props.product.name : ""}
-          >
+            defaultValue={props.prodBool ? props.product.name : ""}>
           </Form.Control>
         </Form.Group>
         <Form.Group
-          className="mb-3"
-          controlId="productDescription">
-          <Form.Label>Kombucha Description</Form.Label>
+          controlId="productBrand">
+          <Form.Label>Kombucha Brand</Form.Label>
           <Form.Control
-            as="textarea"
-            rows={3}
-            name="description"
-            defaultValue={props.prodBool ? props.product.description : ""}
+            type="text"
+            name="brand"
+            defaultValue={props.prodBool ? props.product.brand : ""}
             required />
         </Form.Group>
         <Form.Group
-          className="mb-3"
+          controlId="productFlavor">
+          <Form.Label>Kombucha Flavor</Form.Label>
+          <Form.Control
+            type="text"
+            name="flavor"
+            defaultValue={props.prodBool ? props.product.flavor : ""}
+            required />
+        </Form.Group>
+        <Form.Group
+          controlId="productFlavor">
+          <Form.Label>Keg Price</Form.Label>
+          <Form.Control
+            type="text"
+            name="price"
+            defaultValue={props.prodBool ? props.product.price : ""}
+            required />
+        </Form.Group>
+        <Form.Group
           controlId="productQuantity">
           <Form.Label>Quantity of Kegs</Form.Label>
           <Form.Control
@@ -41,7 +54,6 @@ function ReusableForm(props) {
             required />
         </Form.Group>
         <Button
-          variant="primary"
           type="submit">
           {props.formButtonText} 
         </Button>

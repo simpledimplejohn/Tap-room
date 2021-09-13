@@ -11,7 +11,9 @@ function ProductList(props) {
           whenProductClicked={props.onProductSelection}
           stockPlus={props.addStock}
           stockMinus={props.subtractStock}
-          description={product.description}
+          brand={product.brand}
+          flavor={product.flavor}
+          price={product.price}
           quantity={product.quantity}
           id={product.id}
           key={product.id} />

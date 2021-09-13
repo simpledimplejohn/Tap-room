@@ -8,7 +8,8 @@ function EditProduct(props) {
     props.editProductFunction(
       {
         name: event.target.name.value,
-        description: event.target.description.value,
+        brand: event.target.brand.value,
+        flavor: event.target.flavor.value,
         quantity: event.target.quantity.value,
         id: props.product.id
       }

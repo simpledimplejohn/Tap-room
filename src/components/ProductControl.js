@@ -4,7 +4,7 @@ import NewProductForm from "./NewProductForm";
 import { Button } from "react-bootstrap";
 import ProductDetail from "./ProductDetail";
 import EditProduct from "./EditProduct";
-import Cart from "./Cart";
+import Total from "./Total";
 
 class ProductControl extends React.Component {
 
@@ -143,9 +143,9 @@ class ProductControl extends React.Component {
 
     return (
       <React.Fragment>
-        <Cart items={this.state.cart}/>
+        <Total items={this.state.cart}/>
         {visibleState}
-        <Button onClick={this.handleClick} variant="dark" className="mt-3 p-5">{buttonText}</Button>
+        <Button onClick={this.handleClick} >{buttonText}</Button>
       </React.Fragment>
     ) 
   }
@@ -162,7 +162,7 @@ const dynamicSort = (property) => {
 }
 
 function newProductValid(newProduct) {
-  if (newProduct.name && newProduct.quantity && newProduct.description) {
+  if (newProduct.name && newProduct.quantity && newProduct.brand) {
     return true
   }
 }

@@ -7,9 +7,12 @@ function ProductDetail(props) {
 
   return (
     <React.Fragment>
-      <h1>{product.name}</h1>
-      <p>{product.description}</p>
+      <h3>Name: {product.name}</h3>
+      <p>Brand: {product.brand}</p>
+      <p>Flavor: {product.flavor}</p>
+      <p>Price: {product.price}</p>
       <p>Quantity: {product.quantity}</p>
+      
       <Row>
         <Col>
           <Button
