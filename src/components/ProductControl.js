@@ -83,7 +83,7 @@ class ProductControl extends React.Component {
 
   handleAddStock = (productToEdit) => {
     let updatedProduct = productToEdit
-    updatedProduct.quantity++
+    updatedProduct.quantity += 124
     const editedMainProductList = this.state.mainProductList
       .filter(product => product.id !== productToEdit.id)
       .concat(updatedProduct)
@@ -143,7 +143,6 @@ class ProductControl extends React.Component {
 
     return (
       <React.Fragment>
-        <Total items={this.state.cart}/>
         {visibleState}
         <Button onClick={this.handleClick} >{buttonText}</Button>
       </React.Fragment>

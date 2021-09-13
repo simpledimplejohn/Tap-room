@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap"
 export default function Product(props) {
   const prod = { name: props.name, brand: props.brand, flavor: props.flavor, price: props.price, quantity: props.quantity, id: props.id }
 
-  let subtract = "Subtract 1"
+  let subtract = "Subtract 1 drink"
   if (prod.quantity === 0) {
     subtract = "Out of Stock"
   }
@@ -19,21 +19,19 @@ export default function Product(props) {
         <p><strong>Brand:</strong> {props.brand}</p>
         <p><strong>Flavor:</strong> {props.flavor}</p>
         <p><strong>Price:</strong> {props.price}</p>
-         
-        <ul>
-          <li>Quantity of Kegs: {props.quantity}</li>
-          <li>ID: {props.id}</li>
-        </ul>
-        <Button
+        <p><strong>Drinks Left: </strong> {props.quantity}</p>
+        </div>
+        
+        {/* <Button
           type="submit" onClick={() => props.stockPlus(prod)}>
           Add 1 keg
-        </Button>
+        </Button> */}
         
         <Button
           type="submit" onClick={() => props.stockMinus(prod)}>
           {subtract}
         </Button>
-      </div>
+      
       <hr/>
     </React.Fragment>
   );

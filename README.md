@@ -29,6 +29,7 @@ _accurate representation of the application's component tree_
 
 
 ### __Known Bugs / Future Goals__
+
 _No bugs have been found or reported. Please contact the authors if you experience poor performance._
 
 

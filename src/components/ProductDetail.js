@@ -11,7 +11,7 @@ function ProductDetail(props) {
       <p>Brand: {product.brand}</p>
       <p>Flavor: {product.flavor}</p>
       <p>Price: {product.price}</p>
-      <p>Quantity: {product.quantity}</p>
+      <p>Drinks Left: {product.quantity}</p>
       
       <Row>
         <Col>
