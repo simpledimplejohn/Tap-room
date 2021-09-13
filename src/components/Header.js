@@ -7,7 +7,6 @@ function Header(){
       <h2>Wholesale Kombucha</h2>
       <p>Keg's Available for purchase</p>
     </React.Fragment>
-
   );
 }
 

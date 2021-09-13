@@ -6,6 +6,7 @@ function App(){
   return ( 
     <React.Fragment>
       <Header />
+      <hr/>
       <ProductControl />
     </React.Fragment>
   );

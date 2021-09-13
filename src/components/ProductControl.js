@@ -145,17 +145,17 @@ class ProductControl extends React.Component {
         product={this.state.selectedProduct}
         editProductFunction={this.handleEditing}
       />
-      buttonText = "Head back to Product List 1x **text in ProductControl.js**"
+      buttonText = "Head back to Product List"
     } else if (this.state.selectedProduct != null) {
       visibleState = <ProductDetail
         product={this.state.selectedProduct}
         deleteProduct={this.handleDeletingProductFromList}
         editProduct={this.handleSwitchToEdit}
       />
-      buttonText = "Head back to Product List 2x **text in ProductControl.js**"
+      buttonText = "Head back to Product List"
     } else if (this.state.newProductFormVisible) {
       visibleState = <NewProductForm onNewProductCreation={this.handleAddingNewProductToList} />
-      buttonText = "Head back to Product List 3x **text in ProductControl.js**"
+      buttonText = "Head back to Product List"
     } else {
       visibleState = <ProductList
         productList={this.state.mainProductList.sort(dynamicSort("name"))
@@ -164,15 +164,14 @@ class ProductControl extends React.Component {
         addStock={this.handleAddStock}
         subtractStock={this.handleSubtractStock}
       />
-      buttonText = "Add a product **text in ProductControl.js**"
+      buttonText = "Add a product"
     }
 
     return (
       <React.Fragment>
-        <p><strong>****Just a button, ProductControl.js***</strong></p>
         <Cart items={this.state.cart}/>
         {visibleState}
-        <Button onClick={this.handleClick} variant="dark" className="mt-3 p-5">{buttonText}**ProductControl.js***</Button>
+        <Button onClick={this.handleClick} variant="dark" className="mt-3 p-5">{buttonText}</Button>
       </React.Fragment>
     ) 
   }

@@ -7,22 +7,19 @@ function ProductDetail(props) {
 
   return (
     <React.Fragment>
-      <p>***ProductDetails.js***</p>
       <h1>{product.name}</h1>
       <p>{product.description}</p>
       <p>Quantity: {product.quantity}</p>
       <Row>
         <Col>
           <Button
-            className="btn-warning"
             onClick={() => props.editProduct(product.id)}
-          > Edit **in ProductDetail.js**</Button>
+          > Edit</Button>
         </Col>
         <Col>
           <Button
-            className="btn-danger"
             onClick={() => props.deleteProduct(product.id)}
-          > Delete **in ProductDetail.js**</Button>
+          > Delete</Button>
         </Col>
       </Row>
     </React.Fragment >

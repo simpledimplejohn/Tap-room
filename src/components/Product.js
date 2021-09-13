@@ -12,8 +12,8 @@ export default function Product(props) {
 
   return (
     <React.Fragment>
-      <p><strong>****Shows Product Details, subtract button, Product.js***</strong></p>
       <div onClick={() => props.whenProductClicked(props.id)}>
+        <hr/>
         <p>{props.name}</p>
         <p>
           {props.description}
@@ -22,10 +22,9 @@ export default function Product(props) {
           <li>Quantity: {props.quantity}</li>
           <li>ID: {props.id}</li>
         </ul>
-        <p><strong>****add and subtract buttons here:***</strong></p>
         <Button
           type="submit" onClick={() => props.stockPlus(prod)}>
-          Add 1 **in Product.js**
+          Add 1
         </Button>
         
         <Button
@@ -33,6 +32,7 @@ export default function Product(props) {
           {subtract}
         </Button>
       </div>
+      <hr/>
     </React.Fragment>
   );
 }

@@ -43,7 +43,7 @@ function ReusableForm(props) {
         <Button
           variant="primary"
           type="submit">
-          {props.formButtonText} **button in ProductForm.js**
+          {props.formButtonText} 
         </Button>
       </Form>
     </React.Fragment>

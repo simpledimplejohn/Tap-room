@@ -5,7 +5,7 @@ import PropTypes from "prop-types"
 function ProductList(props) {
   return (
     <React.Fragment>
-      <p><strong>****NOTHING HERE: just map fx, ProductList.js***</strong></p>
+      <h2>See our available inventory below:</h2>
       {props.productList.map((product) =>
         <Product name={product.name}
           whenProductClicked={props.onProductSelection}

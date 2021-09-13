@@ -14,7 +14,8 @@ export default function Cart(props) {
   console.log(items)
   return (
     <React.Fragment>
-        <p>Items in Cart: {totalCartItems} ***in Cart.js***</p>
+        <p>Items in Cart: {totalCartItems}</p>
+        <hr/>
     </React.Fragment>
   )
 }

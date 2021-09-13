@@ -18,10 +18,9 @@ function NewProductForm(props) {
 
   return (
     <React.Fragment>
-      <p><strong>****VISIBLE, Add a new product, NewProductForm.js***</strong></p>
       <ReusableForm
         formSubmissionHandler={handleNewProductFormSubmission}
-        formButtonText="Add Product **text in NewProductForm.js"
+        formButtonText="Add Product"
         prodBool={false}
       ></ReusableForm>
     </React.Fragment>

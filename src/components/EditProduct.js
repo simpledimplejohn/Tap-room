@@ -17,7 +17,6 @@ function EditProduct(props) {
 
   return (
     <React.Fragment>
-      <p><strong>****Text Here, EditProduct.js***</strong></p>
       <ReusableForm
         formSubmissionHandler={handleEditProductFormSubmission}
         formButtonText="Edit"
