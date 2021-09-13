@@ -1,11 +1,13 @@
+
+
 # __Tap Room__
 ### by [John Blalock](https://github.com/simpledimplejohn) 
 
 ### __Description__
-_A Tap-Room that serves kombucha needs to track their inventory.  This app implements these features in a web interface built with the React library and Javascript.  It has full CRUD function to add, read, remove, and update._
+_A Tap-Room that serves kombucha needs to track their inventory.  This app implements these features in a web interface built with the React library and Javascript.  It has the ability to Read, Display, and update quantity._
 
 ### _Project Tree_
-_accurate representation of the application's component tree_
+![screenshot](tap-room-diagram.png)
 
 
 ### __Technologies Used__
@@ -24,7 +26,9 @@ _accurate representation of the application's component tree_
 
 1. _Download repo from github_
 2. _Navigate to the root folder_
-3. _In the console run_`npm start`
+3. _In the console run_
+      `npm install`
+      `npm start`
 4. _In your browser go to:_`localhost:3000`
 
 
