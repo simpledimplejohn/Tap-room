@@ -13,10 +13,10 @@ function ProductDetail(props) {
       <p>Price: {product.price}</p>
       <p>Drinks Left: {product.quantity}</p>
       
-      <Row>
+      {/* <Row>
         <Col>
           <Button
-            onClick={() => props.editProduct(product.id)}
+            onClick={() => props.editProductFunction(product.id)}
           > Edit</Button>
         </Col>
         <Col>
@@ -24,7 +24,7 @@ function ProductDetail(props) {
             onClick={() => props.deleteProduct(product.id)}
           > Delete</Button>
         </Col>
-      </Row>
+      </Row> */}
     </React.Fragment >
   )
 }

@@ -3,10 +3,16 @@ import PropTypes from "prop-types";
 import { Button } from "react-bootstrap"
 
 export default function Product(props) {
-  const prod = { name: props.name, brand: props.brand, flavor: props.flavor, price: props.price, quantity: props.quantity, id: props.id }
+  const keg = { 
+    name: props.name, 
+    brand: props.brand, 
+    flavor: props.flavor, 
+    price: props.price, 
+    quantity: props.quantity, 
+    id: props.id }
 
   let subtract = "Subtract 1 drink"
-  if (prod.quantity === 0) {
+  if (keg.quantity === 0) {
     subtract = "Out of Stock"
   }
 
@@ -28,7 +34,7 @@ export default function Product(props) {
         </Button> */}
         
         <Button
-          type="submit" onClick={() => props.stockMinus(prod)}>
+          type="submit" onClick={() => props.pintMinus(keg)}>
           {subtract}
         </Button>
       
@@ -46,6 +52,6 @@ Product.propTypes = {
   quantity: PropTypes.number.isRequired,
   id: PropTypes.string,
   whenProductClicked: PropTypes.func,
-  stockPlus: PropTypes.func
+
 }
 

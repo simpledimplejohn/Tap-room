@@ -12,7 +12,7 @@ function NewProductForm(props) {
         brand: event.target.brand.value,
         flavor: event.target.flavor.value,
         price: event.target.price.value,
-        quantity: event.target.quantity.value,
+        quantity: 124,
         id: v4()
       }
     )
@@ -23,7 +23,6 @@ function NewProductForm(props) {
       <ReusableForm
         formSubmissionHandler={handleNewProductFormSubmission}
         formButtonText="Add Keg"
-        prodBool={false}
       ></ReusableForm>
     </React.Fragment>
   )

@@ -10,7 +10,7 @@ function EditProduct(props) {
         name: event.target.name.value,
         brand: event.target.brand.value,
         flavor: event.target.flavor.value,
-        quantity: event.target.quantity.value,
+        kegs: event.target.kegs.value,
         id: props.product.id
       }
     )

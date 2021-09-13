@@ -43,16 +43,7 @@ function ReusableForm(props) {
             defaultValue={props.prodBool ? props.product.price : ""}
             required />
         </Form.Group>
-        <Form.Group
-          controlId="productQuantity">
-          <Form.Label>Quantity of Kegs</Form.Label>
-          <Form.Control
-            type="number"
-            name="quantity"
-            min="0"
-            defaultValue={props.prodBool ? props.product.quantity : 0}
-            required />
-        </Form.Group>
+
         <Button
           type="submit">
           {props.formButtonText} 
@@ -64,7 +55,8 @@ function ReusableForm(props) {
 
 
 ReusableForm.propTypes = {
-  onNewProductCreation: PropTypes.func //inherited from parent. Function from controller handleaddingnewproducttolist
+  onNewProductCreation: PropTypes.func, //inherited from parent. Function from controller handleaddingnewproducttolist
+  button: PropTypes.string
 }
 
 export default ReusableForm

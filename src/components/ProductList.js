@@ -1,22 +1,22 @@
 import React from "react";
-import Product from "./Product"
-import PropTypes from "prop-types"
+import Product from "./Product";
+import PropTypes from "prop-types";
 
-function ProductList(props) {
+function ProductList(props){
   return (
     <React.Fragment>
-      <h3>See our available inventory below:</h3>
+      <hr/>
       {props.productList.map((product) =>
-        <Product name={product.name}
-          whenProductClicked={props.onProductSelection}
-          stockPlus={props.addStock}
-          stockMinus={props.subtractStock}
+        <Product 
+          whenProductClicked = { props.onProductSelection }
+          pintMinus={props.subtractPint}
+          name={product.name}
           brand={product.brand}
           flavor={product.flavor}
           price={product.price}
           quantity={product.quantity}
           id={product.id}
-          key={product.id} />
+          key={product.id}/>
       )}
     </React.Fragment>
   );
@@ -24,9 +24,10 @@ function ProductList(props) {
 
 ProductList.propTypes = {
   productList: PropTypes.array,
-  onProductSelection: PropTypes.func,
-  addStock: PropTypes.func,
-  subtractStock: PropTypes.func
-}
+  onProductSelection: PropTypes.func
+};
+//this passes down the propTypes:
+// productList the array
+// & onProductSelection the function determines whether a product has been selected
 
-export default ProductList
+export default ProductList;
